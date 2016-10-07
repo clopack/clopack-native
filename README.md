@@ -1,14 +1,16 @@
-# clopack-native
+# Introduction
 
-A Clojure library designed to ... well, that part is up to you.
+Clojure interface to read and write link-layer packets.
+
+## Status
+
+Experimental, tested on OpenBSD only.
 
 ## Usage
 
-FIXME
+Run `make bsd` and move the `libclopack_native.so` file from `lib/`
+to your preferred system libary path.
 
 ## License
 
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+MIT
