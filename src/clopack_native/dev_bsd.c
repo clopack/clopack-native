@@ -145,8 +145,10 @@ dev_write(int dev, void *buf, int len)
 		nw = write(dev, buf, len);
 	while (nw == -1 && errno == EINTR);
 
-	if (nw == -1)
+	if (nw == -1) {
+		warn("failed to write data through BPF device");
 		return -1;
+	}
 
 	return (int)nw;
 }
