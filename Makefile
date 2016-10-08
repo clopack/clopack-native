@@ -1,5 +1,5 @@
 CC=		gcc
-CFLAGS=		-ansi -pedantic -Wall -Werror -Wextra -c -fpic
+CFLAGS=		-g -ansi -pedantic -Wall -Werror -Wextra -c -fpic
 
 SRC_BSD=	src/clopack_native/dev_bsd.c
 OBJ_BSD=	dev_bsd.o
@@ -15,4 +15,4 @@ bsd: $(SRC_BSD)
 
 clean:
 	rm -f $(OBJ_BSD)
-	rm -f $(LIB)
+	rm -f resources/$(LIB)

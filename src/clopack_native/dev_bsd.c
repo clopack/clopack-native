@@ -45,6 +45,7 @@ dev_open(const char *iface)
 	struct		  bpf_dltlist dlt_list;
 	u_int		  dlt;
 	u_int		  imm;
+	u_int		  hdr_complete;
 
 	unsigned int	  i;
 
@@ -100,6 +101,16 @@ dev_open(const char *iface)
 	imm = 1;
 	if (ioctl(dev, BIOCIMMEDIATE, &imm) == -1) {
 		warn("failed to set immediate mode on BPF device");
+		goto err;
+	}
+
+	/*
+	 * Enable header complete -flag to prevent the interface
+	 * from overwriting the source address.
+	 */
+	hdr_complete = 1;
+	if (ioctl(dev, BIOCSHDRCMPLT, &hdr_complete) == -1) {
+		warn("failed to turn on 'header complete' -flag");
 		goto err;
 	}
 
